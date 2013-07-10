@@ -17,14 +17,20 @@ namespace CodeShareReport
                 new Solution {
                     Name = "iOS",
                     ProjectFiles = new List<string> {
-                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\iOS\DrawAStickman.Core\DrawAStickman.Core.csproj"
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\iOS\DrawAStickman.Core\DrawAStickman.Core.csproj",
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\iOS\DrawAStickman.iPhone\DrawAStickman.iPhone.csproj",
+                    },
+
+                    IgnoreList = new List<Regex> {
+                        new Regex("AssemblyInfo\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
 
                 new Solution {
                     Name = "Android",
                     ProjectFiles = new List<string> {
-                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Droid\DrawAStickman.Core\DrawAStickman.Core.csproj"
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Droid\DrawAStickman.Core\DrawAStickman.Core.csproj",
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Droid\DrawAStickman.Droid\DrawAStickman.Droid.csproj",
                     },
 
                     IgnoreList = new List<Regex> {
@@ -32,25 +38,34 @@ namespace CodeShareReport
                         new Regex("SAMSUNG", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                         new Regex("AMAZON", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                         new Regex("INAPPPURCHASING", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                        new Regex("Resource\\.designer\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                        new Regex("AssemblyInfo\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
 
                 new Solution {
                     Name = "WinRT",
                     ProjectFiles = new List<string> {
-                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Windows8\DrawAStickman.Core\DrawAStickman.Core.csproj"
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Windows8\DrawAStickman.Core\DrawAStickman.Core.csproj",
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Windows8\DrawAStickman.Windows8.Xaml\DrawAStickman.Windows8.csproj",
+                    },
+
+                    IgnoreList = new List<Regex> {
+                        new Regex("AssemblyInfo\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
 
                 new Solution {
                     Name = "WinPho",
                     ProjectFiles = new List<string> {
-                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\WindowsPhone\DrawAStickman.Core.WP7\DrawAStickman.Core.WP7.csproj"
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\WindowsPhone\DrawAStickman.Core.WP7\DrawAStickman.Core.WP7.csproj",
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\WindowsPhone\DrawAStickman.WP7\DrawAStickman.WP7\DrawAStickman.WP7.csproj",
                     },
 
                     IgnoreList = new List<Regex> {
                         //This is a zip library for doing GZip compression, needed on WP7 only
                         new Regex("SHARPZIPLIB", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                        new Regex("AssemblyInfo\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
 
@@ -58,6 +73,11 @@ namespace CodeShareReport
                     Name = "Mac",
                     ProjectFiles = new List<string> {
                         @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Mac\DrawAStickman.Mac\DrawAStickman.Core\DrawAStickman.Core.csproj",
+                        @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Mac\DrawAStickman.Mac\DrawAStickman.Mac\DrawAStickman.Mac.csproj",
+                    },
+
+                    IgnoreList = new List<Regex> {
+                        new Regex("AssemblyInfo\\.cs", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
 
