@@ -1,4 +1,4 @@
-CodeShareReport
+C# Code Sharing Report
 ===============
 
 Code sharing report for comparing percentage of shared code with *.csproj files.
