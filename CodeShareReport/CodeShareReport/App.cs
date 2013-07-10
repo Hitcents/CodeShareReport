@@ -26,6 +26,13 @@ namespace CodeShareReport
                     ProjectFiles = new List<string> {
                         @"Y:\Desktop\MonoTouch\DrawAStickman\Code\Droid\DrawAStickman.Core\DrawAStickman.Core.csproj"
                     },
+
+                    IgnoreList = new List<Regex> {
+                        //Remove additional code files supporting IAPs on various app stores, only count Google Play IAPs
+                        new Regex("SAMSUNG", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                        new Regex("AMAZON", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                        new Regex("INAPPPURCHASING", RegexOptions.IgnoreCase | RegexOptions.Compiled),
+                    },
                 },
 
                 new Solution {
@@ -41,8 +48,8 @@ namespace CodeShareReport
                         @"Y:\Desktop\MonoTouch\DrawAStickman\Code\WindowsPhone\DrawAStickman.Core.WP7\DrawAStickman.Core.WP7.csproj"
                     },
 
-                    //"Y:\\DESKTOP\\MONOTOUCH\\DRAWASTICKMAN\\CODE\\WINDOWSPHONE\\SHARPZIPLIB\\SHARPZIPLIB.SILVERLIGHT\\CHECKSUMS\\ADLER32.CS"
                     IgnoreList = new List<Regex> {
+                        //This is a zip library for doing GZip compression, needed on WP7 only
                         new Regex("SHARPZIPLIB", RegexOptions.IgnoreCase | RegexOptions.Compiled),
                     },
                 },
