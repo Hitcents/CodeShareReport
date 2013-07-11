@@ -128,6 +128,8 @@ namespace CodeShareReport
                             select f.LinesOfCode).Sum();
                 }
             }
+
+            public int TotalFiles { get; set; }
         }
 
         class FileInfo
@@ -163,6 +165,8 @@ namespace CodeShareReport
 
         void Run(List<Solution> solutions)
         {
+            string[] types = new string[] { "Compile", "EmbeddedResource", "Content", "AndroidAsset", "AndroidResource", "ApplicationDefinition", "Page", "None", "InterfaceDefinition", "BundleResource" };
+
             //
             // Find all the files
             //
@@ -183,6 +187,10 @@ namespace CodeShareReport
                     {
                         AddRef(Path.GetFullPath(Path.Combine(dir, inc)), sln);
                     }
+
+                    sln.TotalFiles += doc.Descendants()
+                        .OfType<XElement>()
+                        .Count(e => types.Contains(e.Name.LocalName));
                 }
             }
 
@@ -203,16 +211,17 @@ namespace CodeShareReport
             //
             // Output
             //
-            Console.WriteLine("app\tt\tu\ts\tu%\ts%");
+            Console.WriteLine("app\tt\tu\ts\tu%\ts%\tf");
             foreach (var sln in solutions)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4:p}\t{5:p}",
+                Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4:p}\t{5:p}\t{6}",
                     sln.Name,
                     sln.TotalLinesOfCode,
                     sln.UniqueLinesOfCode,
                     sln.SharedLinesOfCode,
                     sln.UniqueLinesOfCode / (double)sln.TotalLinesOfCode,
-                    sln.SharedLinesOfCode / (double)sln.TotalLinesOfCode);
+                    sln.SharedLinesOfCode / (double)sln.TotalLinesOfCode,
+                    sln.TotalFiles);
             }
 
             Console.WriteLine("DONE");
